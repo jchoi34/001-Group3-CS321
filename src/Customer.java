@@ -1,10 +1,10 @@
 
 public class Customer {
-	int id;
+	public int customerID;
 	String name, address, ccType, ccNumber, ccExpiration;
 	
-	public void setCustomer(int id){
-		this.id = id;
+	public void setCustomerID(int id){
+		this.customerID = id;
 	}
 	
 	public void setName(String name){
@@ -25,6 +25,10 @@ public class Customer {
 	
 	public void setCCExpiration(String ccExpiration){
 		this.ccExpiration = ccExpiration;
+	}
+	
+	public int getCustomerID(){
+		return this.customerID;
 	}
 	
 	public String getName(){
