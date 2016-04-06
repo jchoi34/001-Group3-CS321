@@ -12,7 +12,7 @@
  ***************************************************/
  /*************************************************** 
   * CheckIn pseudo code
-  * @author kuntharith
+  * @author kuntharith buon
   *	
   * Main Sequence:
   * Obtain name and reservationID from customer
@@ -28,8 +28,25 @@
   * 		Set  checkInResp variable to true
   * 
   * return checkInResp;
+  * 
+  * validateUserInformation Sequence:
+  * Create an instance of Customer class and search for customer using 
+  * 	customerName to and the Framework.getCustomerByName method
+  * If method returns null
+  * 	Display invalid credentials message to customer
+  * Create an instance of Reservation and search for reservation associated with
+  * 	customer by using the customer's id and calling Framework.getReservationByCID
+  * 	method.
+  * If method returns null
+  * 	Display reservation not found message to user
+  * else
+  * 	Compare user provided reservation ID to the reservation id that was returned
+  * 	if ID matches
+  * 		set validationResp to true
+  * 	
+  * return validationResp;
   *
-  */
+ ***************************************************/
 
 
 
