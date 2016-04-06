@@ -1,3 +1,37 @@
+/***************************************************
+ * Attributes/Variables and Descriptions
+ * 
+ * Boolean validationResp - Returns status of credential validation
+ * Boolean checkInResp - Returns status of performCheckIn method
+ * Customer cus - Instance of Customer class
+ * Reservation res - Instance of Reservation class
+ * String customerName - String variable containing customer's name
+ * int reservationID - Int variable containign customer's reservation ID
+ *
+ *
+ ***************************************************/
+ /*************************************************** 
+  * CheckIn pseudo code
+  * @author kuntharith
+  *	
+  * Main Sequence:
+  * Obtain name and reservationID from customer
+  * Call performCheckIn Method
+  * 
+  * performCheckIn Sequence:
+  * Call validateUserInformation method
+  * If (validateUserInformation)
+  * 	check the reservation status to see whether or not the customer has 
+  * 	already checked-in/checked-out
+  * 	If(customer has not checked-in/checked-out)
+  * 		Set the reservation status to checked-in
+  * 		Set  checkInResp variable to true
+  * 
+  * return checkInResp;
+  *
+  */
+
+
 
 public class CheckIn {
 	boolean validationResp, checkInResp;
@@ -5,26 +39,6 @@ public class CheckIn {
 	Reservation res;
 	String customerName;
 	int reservationID;
-	//Testing Frameworks
-//	public static void main(String[] args){
-//		Customer cus = new Customer();
-//		cus.setName("Alan Turing");
-//		int customerID = Framework.storeCustomer(cus);
-//		System.out.println("CID " + customerID);
-//		Reservation res = new Reservation();
-//		int resID = Framework.storeReservation(res);
-//		System.out.println("RID " + resID);
-//		Customer cusII = Framework.getCustomerByName("Alan Turing");
-//		System.out.println(cusII);
-//		Reservation resII = Framework.getReservationByCID(cusII.customerID);
-//		System.out.println(resII);
-//		
-//		Customer cusIII = new Customer();
-//		cusIII.setName("TEST");
-//		int c2ID = Framework.storeCustomer(cusIII);
-//		Reservation resIII = Framework.getReservationByCID(cusII.customerID);
-//		System.out.println(resIII);
-//	}
 	
 	public CheckIn(String customerName, int reservationID){
 		this.customerName = customerName;
