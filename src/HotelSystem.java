@@ -32,7 +32,26 @@ public class HotelSystem {
 	}
 	
 	void executeInstruction(int instruction, String[] instructionData){
-		
+		switch (instruction){
+		case 1:
+			//Make a reservation
+			break;
+		case 2:
+			//Check In
+			break;
+		case 3:
+			//Check Out
+			break;
+		case 4:
+			//Print Management Report
+			break;
+		case 5:
+			//Day Change
+			break;
+		case 6: 
+			//6PM Alarm
+			break;
+		}
 	}
 	
 }
