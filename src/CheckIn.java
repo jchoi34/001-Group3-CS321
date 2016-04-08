@@ -58,12 +58,26 @@ public class CheckIn {
 	boolean validationResp, checkInResp;
 	Customer cus;
 	Reservation res;
-	String customerName;
+	String customerName, ccType, ccExpiration, ccNumber;
 	int reservationID;
 	
-	public CheckIn(String customerName, int reservationID){
-		this.customerName = customerName;
-		this.reservationID = reservationID;
+	public CheckIn(String[] instructionData){
+		for (int i = 1; i < instructionData.length; i++){
+			switch(i){
+			case 1:
+				this.customerName = instructionData[i];
+				break;
+			case 2:
+				this.ccType = instructionData[i];
+				break;
+			case 3:
+				this.ccExpiration = instructionData[i];
+				break;
+			case 4:
+				this.ccNumber = instructionData[i];
+				break;
+			}
+		}
 	}
 	
 	 boolean validateUserInformation(){
@@ -91,12 +105,13 @@ public class CheckIn {
 		return checkInResp;
 	}
 	
-	public boolean updateCCInfo(String ccType, String ccNumber, String ccExpiration){
+	public boolean updateCCInfo(){
 		//Call Bank to validate CC
-		if (true){ //CC is valid
-			cus.setCCType(ccType);
-			cus.setCCNumber(ccNumber);
-			cus.setCCExpiration(ccExpiration);
+		int x = 0;
+		if (x==1){ //CC is valid
+			cus.setCCType(this.ccType);
+			cus.setCCNumber(this.ccNumber);
+			cus.setCCExpiration(this.ccExpiration);
 			return true;
 		}
 		return false;
