@@ -45,6 +45,10 @@
   * 		set validationResp to true
   * 	
   * return validationResp;
+  * 
+  * updateCreditCard Sequence:
+  * Obtain new credit card information, such as ccType, ccNumber, ccExpiration,
+  * from guest and Set accordingly if information provided is valid
   *
  ***************************************************/
 
@@ -85,6 +89,17 @@ public class CheckIn {
 			}
 		}
 		return checkInResp;
+	}
+	
+	public boolean updateCCInfo(String ccType, String ccNumber, String ccExpiration){
+		//Call Bank to validate CC
+		if (true){ //CC is valid
+			cus.setCCType(ccType);
+			cus.setCCNumber(ccNumber);
+			cus.setCCExpiration(ccExpiration);
+			return true;
+		}
+		return false;
 	}
 	
 }
