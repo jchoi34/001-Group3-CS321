@@ -4,6 +4,8 @@ import java.io.IOException;
 
 public class HotelSystem {
 	
+	boolean checkInStatus;
+	
 	public static void main(String[] args){
 		HotelSystem system = new HotelSystem();
 		system.readInstructions(args[0]);
@@ -38,6 +40,10 @@ public class HotelSystem {
 			break;
 		case 2:
 			//Check In
+			CheckIn checkInObj = new CheckIn(instructionData);
+			if (instructionData.length > 2)
+				checkInObj.updateCCInfo();
+			checkInObj.performCheckIn();
 			break;
 		case 3:
 			//Check Out
