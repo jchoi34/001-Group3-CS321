@@ -3,7 +3,7 @@ import java.io.IOException;
 //Main Class
 
 public class HotelSystem {
-	
+	Date systemClock = new Date();
 	boolean checkInStatus;
 	
 	public static void main(String[] args){
@@ -53,9 +53,11 @@ public class HotelSystem {
 			break;
 		case 5:
 			//Day Change
+			systemClock.dayChange();
 			break;
 		case 6: 
 			//6PM Alarm
+			
 			break;
 		}
 	}
