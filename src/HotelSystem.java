@@ -6,7 +6,7 @@ public class HotelSystem {
 	
 	public static void main(String[] args){
 		HotelSystem system = new HotelSystem();
-		system.readInstructions("src/SampleInputs/sample1.txt");
+		system.readInstructions(args[0]);
 	}
 	
 	void readInstructions(String fileName){
