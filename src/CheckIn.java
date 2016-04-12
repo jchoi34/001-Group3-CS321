@@ -111,7 +111,6 @@ public class CheckIn {
 	public void updateCCInfo(){
 		//Call Bank to validate CC
 		BankingSystem bank = new BankingSystem();
-		int x = 0;
 		if (bank.validateCreditCard(ccType, Integer.parseInt(ccNumber), ccExpiration)){ //CC is valid
 			cus.setCCType(this.ccType);
 			cus.setCCNumber(this.ccNumber);
