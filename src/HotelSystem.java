@@ -56,6 +56,7 @@ public class HotelSystem {
 			systemClock.dayChange();
 			break;
 		case 6: 
+			
 			//6PM Alarm
 			
 			break;
