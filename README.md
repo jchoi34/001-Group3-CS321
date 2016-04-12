@@ -1,3 +1,7 @@
+# Install Git
+Refer the following site for instructions on how to setup Git on your system<br />
+https://git-scm.com/book/en/v2/Getting-Started-Installing-Git 
+
 # Instructions
 
 1. Clone the repository to your local hard drive<br />
