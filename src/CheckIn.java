@@ -87,34 +87,36 @@ public class CheckIn {
 			res = Framework.getReservationByCID(cus.getCustomerID()); 
 			validationResp = true;
 		}
-		catch(NullPointerException e){
-			System.out.println("Customer/Reservation Not Found");
-		}
+		catch(NullPointerException e){}
 		return validationResp;
 	}
 	
-	public boolean performCheckIn(){
+	public void performCheckIn(){
 		if (validateUserInformation()){ //Customer Found
 			int currentResStatus = res.getStatus();
 			//Not Checked-In or Has not Checked-Out
 			if (currentResStatus != 2 || currentResStatus != 3){ 
 				res.setStatus(2);
-				checkInResp = true;
+				System.out.println("Success: Check-In Successful");
+			}
+			else{
+				System.out.println("Failed: Customer has already checked-in/checked-out");
 			}
 		}
-		return checkInResp;
+		else{
+			System.out.println("Failed: Customer Not Found");
+		}
 	}
 	
-	public boolean updateCCInfo(){
+	public void updateCCInfo(){
 		//Call Bank to validate CC
 		int x = 0;
 		if (x==1){ //CC is valid
 			cus.setCCType(this.ccType);
 			cus.setCCNumber(this.ccNumber);
 			cus.setCCExpiration(this.ccExpiration);
-			return true;
+			System.out.println("Success: Credit Card Information Has Been Updated");
 		}
-		return false;
 	}
 	
 }

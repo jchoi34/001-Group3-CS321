@@ -3,10 +3,12 @@ import java.io.IOException;
 //Main Class
 
 public class HotelSystem {
+	Date systemClock = new Date();
+	boolean checkInStatus;
 	
 	public static void main(String[] args){
 		HotelSystem system = new HotelSystem();
-		system.readInstructions("src/SampleInputs/sample1.txt");
+		system.readInstructions(args[0]);
 	}
 	
 	void readInstructions(String fileName){
@@ -38,6 +40,10 @@ public class HotelSystem {
 			break;
 		case 2:
 			//Check In
+			CheckIn checkInObj = new CheckIn(instructionData);
+			if (instructionData.length > 2)
+				checkInObj.updateCCInfo();
+			checkInObj.performCheckIn();
 			break;
 		case 3:
 			//Check Out
@@ -47,9 +53,12 @@ public class HotelSystem {
 			break;
 		case 5:
 			//Day Change
+			systemClock.dayChange();
 			break;
 		case 6: 
+			
 			//6PM Alarm
+			
 			break;
 		}
 	}
