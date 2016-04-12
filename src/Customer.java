@@ -1,7 +1,8 @@
 
 public class Customer {
 	public int customerID;
-	String name, address, ccType, ccNumber, ccExpiration;
+	protected String name, address, ccType, ccNumber, ccExpiration;
+	protected boolean STATUS_CHECKED_OUT, STATUS_CHECKED_IN;
 	
 	public void setCustomerID(int id){
 		this.customerID = id;
