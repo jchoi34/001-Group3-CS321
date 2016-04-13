@@ -7,14 +7,14 @@ public class ManagerReport{
 		int date;
 		Customer cus; 
 		
-		public ReportObject(){}
+		public ReportObject(){} //Default Constructor
 		
-		public ReportObject(int date, Customer cus){
+		public ReportObject(int date, Customer cus){ //Creates ReportObject
 			this.date = date;
 			this.cus = cus;
 		}
 		
-		public void addReportObject(int date, Customer cus){
+		public void addReportObject(int date, Customer cus){ //Adds ReportObject into Arraylist
 			ReportObject tmp = new ReportObject(date, cus);
 			reportObj.add(tmp);
 		}
@@ -25,7 +25,7 @@ public class ManagerReport{
 		StringBuilder sb = new StringBuilder();
 		int count = 0;
 		for (int i = 1; i <= date; i++){
-			sb.append(String.format("==================January %d, 2016==================", i));
+			sb.append(String.format("\n==================January %d, 2016==================\n", i));
 				for (int x = count; x < reportObj.size(); x++){
 					System.out.println(reportObj.get(x).cus.getName() + " " + reportObj.get(x).date);
 					if (reportObj.get(x).date != i){
