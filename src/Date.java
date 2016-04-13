@@ -1,10 +1,18 @@
+import java.util.ArrayList;
 
 public class Date {
 	int currentDate = 1;
 	StringBuilder sb;
 	
-	public void dayChange(){
+	public void dayChange(ArrayList<Customer> customers){
+		performSixPMCheck(customers);
 		this.currentDate = this.currentDate + 1;
+	}
+	
+	public void performSixPMCheck(ArrayList<Customer> customers){
+		for (int i = 0; i < customers.size(); i++){
+			
+		}
 	}
 	
 	public String toString(){

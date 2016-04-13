@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 
 public class TestReservation {
 	String customerName, address, ccType, ccExpiration, ccNumber;
 	int checkInDate, checkOutDate, roomType, numOfOccupants,guaranteed;
-	public TestReservation(String[] instructionData){
+	public TestReservation(String[] instructionData, ArrayList<Customer> customers){
 		for (int i = 1; i < instructionData.length; i++){
 			switch (i){
 			case 1:
@@ -45,11 +46,13 @@ public class TestReservation {
 		cus.setCCExpiration(ccExpiration);
 		cus.setCustomerID(Framework.storeCustomer(cus));
 		Reservation res = new Reservation();
+		res.setStartDate(checkInDate);
+		res.setEndDate(checkOutDate);
 		res.setCustomerID(cus.getCustomerID());
 		res.setStatus(guaranteed);
 		int resID = Framework.storeReservation(res);
 		System.out.println(customerName + " " + res.status);
-		
+		customers.add(cus);
 //		System.out.println(cus.customerID);
 //		System.out.println(Framework.getReservationByCID(cus.customerID));
 	}
