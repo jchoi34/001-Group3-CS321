@@ -13,7 +13,6 @@ public class HotelSystem {
 		HotelSystem system = new HotelSystem();
 		system.fileName = args[0];
 		system.readInstructions(args[0]);
-		
 	}
 	
 	void readInstructions(String fileName){
@@ -59,7 +58,8 @@ public class HotelSystem {
 		case 4:
 			//Print Management Report
 			String report = mgr.printManagementReport(systemClock.currentDate);
-			String loc = String.format(System.getProperty("user.dir")+"/src/HRS_%s", fileName);
+			
+			String loc = String.format(System.getProperty("user.dir")+"/src/HRS_%s", fileName.);
 			System.out.print(loc);
 			try {
 				File file = new File(loc);

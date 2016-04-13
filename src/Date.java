@@ -19,7 +19,7 @@ public class Date {
 	}
 	
 	public String toString(){
-		sb = new StringBuilder(String.format("January %d, 2015", this.currentDate));
+		sb = new StringBuilder(String.format("January %d, 2016", this.currentDate));
 		return sb.toString();
 	}
 }
