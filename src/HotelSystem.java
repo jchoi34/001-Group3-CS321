@@ -1,5 +1,8 @@
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.*;
 
 //Main Class
@@ -7,6 +10,19 @@ import java.util.*;
 public class HotelSystem {
 
 	public static void main(String[] args){
+		
+		// Should redirect system.out content to file..........................needs testing
+		PrintStream out;
+		
+		try {
+			out = new PrintStream(new FileOutputStream("output.txt"));
+			System.setOut(out);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		HotelSystem system = new HotelSystem();
 		
 		// Create all rooms and put it into an array
@@ -18,7 +34,7 @@ public class HotelSystem {
 			hotelRooms.add(new Room());
 			hotelRooms.get(i).setReserved(1, Framework.NUM_DAYS, false);
 		}
-				
+		
 		system.readInstructions("src/SampleInputs/sample1.txt", hotelRooms);
 	}
 	
@@ -47,20 +63,9 @@ public class HotelSystem {
 	void executeInstruction(int instruction, String[] instructionData, List<Room> hotelRooms){
 		switch (instruction){
 		case 1:
-			//Make a reservation
+			//Make a reservation			
+			MakeReservation newRes = new MakeReservation(instructionData, hotelRooms);
 			
-			// Maybe??????
-			try {
-				MakeReservation.class.newInstance().MakeReservation(instructionData, hotelRooms);
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			// Maybe??????			
-						
 			break;
 		case 2:
 			//Check In

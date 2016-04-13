@@ -95,7 +95,7 @@ public class MakeReservation {
 	Customer cus;
 	Reservation res;
 	
-	public void MakeReservation(String [] res_info, List<Room> hotelRooms) {
+	public MakeReservation(String [] res_info, List<Room> hotelRooms) {
 		status = 1;
 		roomtype = Integer.parseInt(res_info[5]);
 		occupants = Integer.parseInt(res_info[6]);
@@ -127,6 +127,8 @@ public class MakeReservation {
 			cusID = Framework.getCustomerByName(res_info[1]).getCustomerID();
 
 		}
+		
+		System.out.println("Make Reservation request for " + cus.getName() + ":");
 				
 		// Set guaranteed to boolean type given res_info[7]
 		if (res_info[7] == "0")
@@ -183,6 +185,26 @@ public class MakeReservation {
 			// Get Reservation ID?
 			resID = Framework.storeReservation(res);
 			res.setReservationID(resID);		// redundant?
+			
+			System.out.println("Reservation: Success");
+			if (guaranteed)
+			{
+				System.out.println("Guaranteed: True");
+			}
+			else
+			{
+				System.out.println("Guaranteed: False");
+			}
+			
+			System.out.println("Check In: January " + startDate + ", 2015" ); 	// Output guideline says to use 2015 @_@
+			System.out.println("Check Out: January " + endDate + ", 2015" ); 	// Output guideline says to use 2015 @_@
+		}
+		else
+		{
+			System.out.println("Reservation: Failed");
+			System.out.println("Guaranteed:");
+			System.out.println("Check In:" );
+			System.out.println("Check Out:" );
 		}
 	}
 }
