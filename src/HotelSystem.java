@@ -48,6 +48,8 @@ public class HotelSystem {
 			break;
 		case 3:
 			//Check Out
+			CheckOut checkOutObj = new CheckOut(instructionData);
+			checkOutObj.performCheckOut();
 			break;
 		case 4:
 			//Print Management Report
