@@ -18,19 +18,19 @@ getReport(int date)
    case 1: // SUM TOTAL NUMBER OF GUESTS IN HOTEL
    // for every reservation object that has a start date less than or equal to date AND end date is greater than or equal to date
    // signifies that the room is occupied
-   while (ResObjList->next != NULL)
+   while(ResObjList != null)
       {if (Reservation.getStartDate() <= date && Reservation.getEndDate() >= date)
       total_guests += Reservation.getNumOccupants();
-      ResObjList->next;}
+      ResObjList = ResObjList.next;}
    System.out.print("The total number of guests for Date %d:  %d\n" + date + total_guests);
    break;
 
    case 2: // SUM TOTAL OF RESERVED ROOMS IN HOTEL
    // for every Reservation object that is status 'reserved' on that date
-   while(ResObjList-> != NULL)
+   while(ResObjList != null)
    {if (Reservation.getStartDate() <= date && Reservation.getStatus() == 1)
       total_rooms++;
-   ResObjList->next;}
+   ResObjList = ResObjList.next;}
    System.out.print("The total number of rooms booked for Date %d:  %d\n" + date + total_rooms);
    break;
 
