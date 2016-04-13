@@ -52,7 +52,6 @@ public class TestReservation {
 		res.setGuaranteed(guaranteed);
 		int resID = Framework.storeReservation(res);
 		mgr.createNewReportObj(date, cus);
-		System.out.println(customerName + " " + res.status);
 		customers.add(cus);
 //		System.out.println(cus.customerID);
 //		System.out.println(Framework.getReservationByCID(cus.customerID));

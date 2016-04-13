@@ -21,7 +21,7 @@ public class ManagerReport{
 		
 	}
 	
-	public void printManagementReport(int date){
+	public String printManagementReport(int date){
 		StringBuilder sb = new StringBuilder();
 		int count = 0;
 		for (int i = 1; i <= date; i++){
@@ -42,6 +42,8 @@ public class ManagerReport{
 			sb.append("\n");
 		}
 		System.out.println(sb.toString());
+		System.out.println(System.getProperty("user.dir"));
+		return sb.toString();
 	}
 	
 	public void createNewReportObj(int date, Customer cus){
