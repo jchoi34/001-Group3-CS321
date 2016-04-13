@@ -1,26 +1,44 @@
 
 public class CheckOut {
 
-	Customer c = new Customer();
-	boolean validation;
+	boolean validation = false;
+	Customer cus;
 	Reservation res;
-	Customer name;
-	public void checkOut(Customer c)
-	{
-		c.STATUS_CHECKED_OUT = true;   // update checked out status
-		c.STATUS_CHECKED_IN = false;   // update checked in status
+	String customerName;
+	public CheckOut(String[] instructionData){
+		this.customerName = instructionData[1];
+	}
+	
+	public void performCheckOut(){
+		if (validateUserInformation()){
+			int status = res.getStatus();
+			System.out.println(res.getStatus());
+			switch (status){
+			case 2:
+				res.setStatus(Framework.STATUS_CHECKED_OUT);
+				Framework.modifyReservation(res.getReservationID(), res);
+				System.out.println("Success: Check-Out Successful!");
+				break;
+			case 3:
+				System.out.println("Error: " + customerName + " Has Already Checked-Out");
+				break;
+			default:
+				System.out.println("Error: " + customerName + " Has Not Checked-In");
+				break;
+			}
+		}else{
+			System.out.println("Failed: Customer Not Found!");
+		}
 	}
 	
 	boolean validateUserInformation(){
 		try {
 			//Search for Customer and Reservation
-			name = Framework.getCustomerByName(c.name); // find customer by name
-			res = Framework.getReservationByCID(c.customerID);  // find customer by id
+			cus = Framework.getCustomerByName(this.customerName); // Find Customer By Name
+			res = Framework.getReservationByCID(cus.customerID);  // find Reservation By CustomerID
 			validation = true;
 		}
-		catch(NullPointerException e){
-			System.out.println("Customer/Reservation Not Found"); // throw null pointer if customer not found
-		}
+		catch(NullPointerException e){}
 		return validation;
 }
 }
