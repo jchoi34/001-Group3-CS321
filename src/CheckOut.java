@@ -1,23 +1,24 @@
 
 public class CheckOut {
 
-	protected Customer c = new Customer();
 	protected boolean validation;
 	protected Reservation res;
-	protected Customer name;
-	public void checkOut(Customer c)
-	{
-		if(validateUserInformation(c)){
-		c.STATUS_CHECKED_OUT = true;   // update checked out status
-		c.STATUS_CHECKED_IN = false;   // update checked in status
+	protected Customer customer;
+	protected String customerName;
+	
+	
+	public CheckOut(String[] instructionData){
+		if(instructionData[1] != null){
+			this.customerName = instructionData[1];
+			validateUserInformation(customerName);
 		}
 	}
 	
-	boolean validateUserInformation(Customer c){
+	boolean validateUserInformation(String name){
 		try {
 			//Search for Customer and Reservation
-			name = Framework.getCustomerByName(c.name); // find customer by name
-			res = Framework.getReservationByCID(c.customerID);  // find customer by id
+			customer = Framework.getCustomerByName(name); // find customer by name
+			res = Framework.getReservationByCID(customer.customerID);  // find customer by id
 			validation = true;
 		}
 		catch(NullPointerException e){
