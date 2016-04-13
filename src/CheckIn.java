@@ -99,7 +99,7 @@ public class CheckIn {
 			int currentResStatus = res.getStatus();
 			
 			//Not Checked-In or Has not Checked-Out
-			if (currentResStatus != Framework.STATUS_CHECKED_IN || currentResStatus != Framework.STATUS_CHECKED_OUT){ 
+			if (currentResStatus != Framework.STATUS_CHECKED_IN && currentResStatus != Framework.STATUS_CHECKED_OUT){ 
 				res.setStatus(Framework.STATUS_CHECKED_IN); //Sets the status to checked-in
 				Framework.modifyReservation(res.getReservationID(), res);
 				System.out.println("Success: Check-In Successful"); 
