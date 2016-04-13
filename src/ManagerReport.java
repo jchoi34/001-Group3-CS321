@@ -41,8 +41,6 @@ public class ManagerReport{
 				}
 			sb.append("\n");
 		}
-		System.out.println(sb.toString());
-		System.out.println(System.getProperty("user.dir"));
 		return sb.toString();
 	}
 	
