@@ -76,7 +76,6 @@ public class MakeReservation {
 	String customerName, address, ccType, ccExpiration, ccNumber;
 	int startDate, endDate, roomtype, occupants, status, cusID, roomNum, resID;
 	boolean guaranteed;
-	//public TestReservation(String[] instructionData, ArrayList<Customer> customers, int date, ManagerReport mgr){
 	
 	public MakeReservation(String [] res_info, ArrayList<Customer> customers, int date, ManagerReport mgr, List<Room> hotelRooms) {
 		status = 1;
