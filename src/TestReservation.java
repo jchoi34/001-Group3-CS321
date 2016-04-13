@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class TestReservation {
 	String customerName, address, ccType, ccExpiration, ccNumber;
 	int checkInDate, checkOutDate, roomType, numOfOccupants,guaranteed;
-	public TestReservation(String[] instructionData, ArrayList<Customer> customers){
+	public TestReservation(String[] instructionData, ArrayList<Customer> customers, int date, ManagerReport mgr){
 		for (int i = 1; i < instructionData.length; i++){
 			switch (i){
 			case 1:
@@ -51,6 +51,7 @@ public class TestReservation {
 		res.setCustomerID(cus.getCustomerID());
 		res.setStatus(guaranteed);
 		int resID = Framework.storeReservation(res);
+		mgr.createNewReportObj(date, cus);
 		System.out.println(customerName + " " + res.status);
 		customers.add(cus);
 //		System.out.println(cus.customerID);
