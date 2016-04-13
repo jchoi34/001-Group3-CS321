@@ -48,7 +48,8 @@ public class TestReservation {
 		res.setCustomerID(cus.getCustomerID());
 		res.setStatus(guaranteed);
 		int resID = Framework.storeReservation(res);
-//		System.out.println(customerName + " " + resID);
+		System.out.println(customerName + " " + res.status);
+		
 //		System.out.println(cus.customerID);
 //		System.out.println(Framework.getReservationByCID(cus.customerID));
 	}
