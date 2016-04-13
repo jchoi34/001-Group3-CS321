@@ -27,7 +27,6 @@ public class ManagerReport{
 		for (int i = 1; i <= date; i++){
 			sb.append(String.format("\n==================January %d, 2016==================\n", i));
 				for (int x = count; x < reportObj.size(); x++){
-					System.out.println(reportObj.get(x).cus.getName() + " " + reportObj.get(x).date);
 					if (reportObj.get(x).date != i){
 						count = x+1;
 						break;

@@ -53,8 +53,6 @@ public class TestReservation {
 		int resID = Framework.storeReservation(res);
 		mgr.createNewReportObj(date, cus);
 		customers.add(cus);
-//		System.out.println(cus.customerID);
-//		System.out.println(Framework.getReservationByCID(cus.customerID));
 	}
 	
 }
