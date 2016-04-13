@@ -4,11 +4,11 @@ import java.io.IOException;
 
 public class HotelSystem {
 	Date systemClock = new Date();
-	boolean checkInStatus;
 	
 	public static void main(String[] args){
 		HotelSystem system = new HotelSystem();
 		system.readInstructions(args[0]);
+		
 	}
 	
 	void readInstructions(String fileName){
@@ -37,16 +37,19 @@ public class HotelSystem {
 		switch (instruction){
 		case 1:
 			//Make a reservation
+			TestReservation res = new TestReservation(instructionData);
 			break;
 		case 2:
 			//Check In
 			CheckIn checkInObj = new CheckIn(instructionData);
-			if (instructionData.length > 2)
-				checkInObj.updateCCInfo();
+//			if (instructionData.length > 2)
+//				checkInObj.updateCCInfo();
 			checkInObj.performCheckIn();
 			break;
 		case 3:
 			//Check Out
+			CheckOut checkOutObj = new CheckOut(instructionData);
+			checkOutObj.performCheckOut();
 			break;
 		case 4:
 			//Print Management Report
@@ -56,6 +59,7 @@ public class HotelSystem {
 			systemClock.dayChange();
 			break;
 		case 6: 
+			
 			//6PM Alarm
 			
 			break;

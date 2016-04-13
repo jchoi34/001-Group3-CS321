@@ -83,38 +83,47 @@ public class CheckIn {
 	 boolean validateUserInformation(){
 		try {
 			//Search for Customer and Reservation
+			System.out.println(customerName);
 			cus = Framework.getCustomerByName(customerName);
 			res = Framework.getReservationByCID(cus.getCustomerID()); 
 			validationResp = true;
 		}
-		catch(NullPointerException e){}
+		catch(NullPointerException e){
+			e.printStackTrace();
+		}
 		return validationResp;
 	}
 	
 	public void performCheckIn(){
 		if (validateUserInformation()){ //Customer Found
 			int currentResStatus = res.getStatus();
+			
 			//Not Checked-In or Has not Checked-Out
-			if (currentResStatus != 2 || currentResStatus != 3){ 
-				res.setStatus(2);
-				System.out.println("Success: Check-In Successful");
+			if (currentResStatus != Framework.STATUS_CHECKED_IN || currentResStatus != Framework.STATUS_CHECKED_OUT){ 
+				res.setStatus(Framework.STATUS_CHECKED_IN); //Sets the status to checked-in
+				Framework.modifyReservation(res.getReservationID(), res);
+				System.out.println("Success: Check-In Successful"); 
 			}
 			else{
-				System.out.println("Failed: Customer has already checked-in/checked-out");
+				//Customer has already checked-in/checked-out
+				System.out.println("Failed: Customer has already checked-in/checked-out"); 
 			}
 		}
 		else{
+			//Fatal: Customer not found
 			System.out.println("Failed: Customer Not Found");
 		}
 	}
 	
 	public void updateCCInfo(){
 		//Call Bank to validate CC
-		int x = 0;
-		if (x==1){ //CC is valid
+		BankingSystem bank = new BankingSystem();
+		if (bank.validateCreditCard(ccType, Integer.parseInt(ccNumber), ccExpiration)){ //CC is valid
+			//Following 3 lines updates the customer payment information with the updated one. 
 			cus.setCCType(this.ccType);
 			cus.setCCNumber(this.ccNumber);
 			cus.setCCExpiration(this.ccExpiration);
+			Framework.modifyCustomer(cus.getCustomerID(), cus);
 			System.out.println("Success: Credit Card Information Has Been Updated");
 		}
 	}
