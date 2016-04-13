@@ -83,17 +83,21 @@ public class CheckIn {
 	 boolean validateUserInformation(){
 		try {
 			//Search for Customer and Reservation
+			System.out.println(customerName);
 			cus = Framework.getCustomerByName(customerName);
 			res = Framework.getReservationByCID(cus.getCustomerID()); 
 			validationResp = true;
 		}
-		catch(NullPointerException e){}
+		catch(NullPointerException e){
+			e.printStackTrace();
+		}
 		return validationResp;
 	}
 	
 	public void performCheckIn(){
 		if (validateUserInformation()){ //Customer Found
 			int currentResStatus = res.getStatus();
+			
 			//Not Checked-In or Has not Checked-Out
 			if (currentResStatus != Framework.STATUS_CHECKED_IN || currentResStatus != Framework.STATUS_CHECKED_OUT){ 
 				res.setStatus(Framework.STATUS_CHECKED_IN); //Sets the status to checked-in

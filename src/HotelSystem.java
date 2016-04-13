@@ -37,12 +37,13 @@ public class HotelSystem {
 		switch (instruction){
 		case 1:
 			//Make a reservation
+			TestReservation res = new TestReservation(instructionData);
 			break;
 		case 2:
 			//Check In
 			CheckIn checkInObj = new CheckIn(instructionData);
-			if (instructionData.length > 2)
-				checkInObj.updateCCInfo();
+//			if (instructionData.length > 2)
+//				checkInObj.updateCCInfo();
 			checkInObj.performCheckIn();
 			break;
 		case 3:
