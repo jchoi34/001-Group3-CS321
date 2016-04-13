@@ -1,3 +1,7 @@
+package Hotel;
+
+import java.util.*;
+
 /******************************************************************************
  * Attribute and Description
   
@@ -30,7 +34,6 @@ STATUS_MUST_PAY - The status code for a must pay reservation
   * 10 - Credit Card Number (if 1 above) = 1234 1234 1234 1234 12
   *******************************************************************************/
 
-
   /*****************************************************************************
   * Reservation Details
   * @author Mars
@@ -50,52 +53,49 @@ STATUS_MUST_PAY - The status code for a must pay reservation
   * Make Reservation pseudo code
   * @author Mars
   * 
-  * Need
-  * 	verify_rooms
-  *	int customerID
+  * Needs
+  * 	verify customer
+  * 	verify room availability given dates and room type
+  * 	make reservation
   *	
-  *	
-  * call method (string [] res_info)
-  *	
-  *	
-  * create new customer object
-  * 	Customer cus = new Customer( details from res_info…);
-  *	
-  *	//Try catch begin
-  *	if customer is not in DB
-  * 		//store customer in framework DB
-  * 		customerID = Framework.storeCustomer(cus);
-  *	else
-  *		customerID = getCusID();
-  *	set cut customerID
-  *	//Try catch end
-  *	
-  *	//for loop through days to check if room type is available
-  *	// Use a flag or counter to conclude if successful etc?
-  *	if room type during specified days = available
-  *		if guaranteed = 1
-  *			//create new reservation object
-  *			Reservation res = new Reservation( full cus_info);
-  *		else
-  *			//create new reservation object
-  *			Reservation res = new Reservation( cus_info , null, null, null);
-  *	
-  *	
-  * 		//store reservation in framework DB
-  * 		int resID = Framework.storeReservation(res);
-  *	else
-  *		Display error: Room type not available
+  * Parameters: res_info array, hotelRooms array
+  * 
+  * Pseudo code:
+  * 	verify if customer's name already exist in Framework
+  * 		if it does not: create new customer with details in res_info
+  * 						add new customer to Framework to get customer ID
+  * 						save customer ID
+  * 		if it does: get customer ID of the customer found
+  * 	verify if reservation is guaranteed from res_info
+  * 		if not guaranteed: set boolean to false
+  * 		if guaranteed: set boolean to true
+  * 						set customer credit card information (number, expiration date, type)
+  * 	From the array of hotleRooms
+  * 		verify if room is the right type
+  * 			if it is wrong type: do nothing
+  * 			if it is right type: from the list of days requested
+  * 				verify if room is available
+  * 					if it is: mark it available is true
+  * 					if it is not: mark it available is false
+  * 				verify available is still true
+  * 					if true: set found flag to stop searching
+  * 					if false: do nothing
+  * 	verify room was found for specified days
+  * 		if true: create new reservation with details gathered
+  * 				 add new reservation to Framework to get reservation ID
+  * 				 save reservation ID
+  * 		if false: return error?
+  *					  Display error: Room type not available for specific days
   */
-
 
 public class MakeReservation {
 // Variables
-	int status, cusID, startDate, endDate, day, roomtype, occupants, roomNum;
-	boolean guaranteed, available;
+	int status, cusID, startDate, endDate, day, roomtype, occupants, roomNum, resID;
+	boolean guaranteed, available, found;
 	Customer cus;
 	Reservation res;
 	
-	public MakeReservation(String [] res_info) {
+	public void MakeReservation(String [] res_info, List<Room> hotelRooms) {
 		status = 1;
 		roomtype = Integer.parseInt(res_info[5]);
 		occupants = Integer.parseInt(res_info[6]);
@@ -103,11 +103,10 @@ public class MakeReservation {
 		endDate = Integer.parseInt(res_info[4]);
 		day = startDate;
 		available = true;
-		
-		
-		
+		found = false;
+				
 		// Check Customer Information
-		if (Framework.getCustomerByName(res_info[1]) == Null)	// Check if customer exists
+		if (Framework.getCustomerByName(res_info[1]) == null)	// Check if customer exists
 		{
 			cus = new Customer();
 			cus.setName(res_info[1]);
@@ -119,10 +118,16 @@ public class MakeReservation {
 				cus.setCCExpiration(res_info[9]);
 				cus.setCCNumber(res_info[10]);
 			}
+			
+			cusID = Framework.storeCustomer(cus);
 		}
-		
-		cusID = cus.getCustomerID();
-		
+		else
+		{
+			// Framework.getCustomerByName returns cus
+			cusID = Framework.getCustomerByName(res_info[1]).getCustomerID();
+
+		}
+				
 		// Set guaranteed to boolean type given res_info[7]
 		if (res_info[7] == "0")
 		{
@@ -133,35 +138,52 @@ public class MakeReservation {
 			guaranteed = true;
 		}
 		
-		// NEED TO DEFINE ROOM NUMBER
-		
-		
-		
 		// Check Room Availability
-		for (int i = (endDate - startDate)+1; i >0; i--)
+		for (int r=0; (r < hotelRooms.size()) && !found; r++)
 		{
-			// Check if room is available on this day
-			if (Room_Available)
+			if (hotelRooms.get(r).getType() == roomtype)
 			{
-				available = available && true;
-			}
-			else
-			{
-				available = available && false;
+				for (int i = startDate; i <= endDate; i++)
+				{
+					// Check if room is available on this day
+					//	if room is not available on any day(s) return false
+					if (hotelRooms.get(r).getReserved(i))
+					{
+						available = available && true;
+					}
+					else
+					{
+						available = available && false;
+					}
+				}
+				
+				// After checking all requested day(s)
+				if (available) 
+				{
+					found = true;
+					roomNum = hotelRooms.get(r).getRoomNum();
+				}
 			}
 		}
+
 		
-		if (available)
+		if (found)
 		{
 			// Make Reservation
+			res = new Reservation();
+			res.setStatus(1);
+			res.setStartDate(startDate);
+			res.setEndDate(endDate);
+			res.setRoomType(roomtype);
+			res.setNumOccupants(occupants);
+			res.setGuaranteed(guaranteed);
+			res.setRoomNumber(roomNum);
+			res.setCustomerID(cusID);
 			
-			// Get Reservation ID
-			
-			// Reduce NUM_*_ROOMS?... this is
+			// Get Reservation ID?
+			resID = Framework.storeReservation(res);
+			res.setReservationID(resID);		// redundant?
 		}
-		
-		
-		
 	}
 }
 	

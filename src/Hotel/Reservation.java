@@ -1,7 +1,10 @@
+package Hotel;
+
 
 public class Reservation {
 	
-	int reservationID, status, startDate, endDate, roomType, numOccupants, guaranteed, roomNum, customerID;
+	int reservationID, status, startDate, endDate, roomType, numOccupants, roomNum, customerID;
+	boolean guaranteed;
 	
 	public void setReservationID(int reservationID){
 		this.reservationID = reservationID;
@@ -27,7 +30,11 @@ public class Reservation {
 		this.numOccupants = numOccupants;
 	}
 	
-	public void setGuaranteed(int guaranteed){
+/*	public void setGuaranteed(int guaranteed){
+		this.guaranteed = guaranteed;
+	}*/
+	
+	public void setGuaranteed(boolean guaranteed){
 		this.guaranteed = guaranteed;
 	}
 	
@@ -63,7 +70,11 @@ public class Reservation {
 		return this.numOccupants;
 	}
 	
-	public int getGuaranteed(){
+/*	public int getGuaranteed(){
+		return this.guaranteed;
+	}*/
+	
+	public boolean getGuaranteed(){
 		return this.guaranteed;
 	}
 	

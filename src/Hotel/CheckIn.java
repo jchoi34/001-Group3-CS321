@@ -1,3 +1,5 @@
+package Hotel;
+
 /***************************************************
  * Attributes/Variables and Descriptions
  * 

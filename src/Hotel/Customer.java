@@ -1,3 +1,5 @@
+package Hotel;
+
 
 public class Customer {
 	public int customerID;
