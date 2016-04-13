@@ -1,4 +1,4 @@
-package Hotel;
+
 import java.io.IOException;
 import java.util.*;
 
@@ -16,7 +16,7 @@ public class HotelSystem {
 		for (int i = 0; i < totalRooms; i++)
 		{
 			hotelRooms.add(new Room());
-			hotelRooms.get(i).setReserved(false);
+			hotelRooms.get(i).setReserved(1, Framework.NUM_DAYS, false);
 		}
 				
 		system.readInstructions("src/SampleInputs/sample1.txt", hotelRooms);
@@ -51,7 +51,7 @@ public class HotelSystem {
 			
 			// Maybe??????
 			try {
-				Hotel.MakeReservation.class.newInstance().MakeReservation(instructionData, hotelRooms);
+				MakeReservation.class.newInstance().MakeReservation(instructionData, hotelRooms);
 			} catch (InstantiationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -60,7 +60,7 @@ public class HotelSystem {
 				e.printStackTrace();
 			}
 			// Maybe??????			
-			
+						
 			break;
 		case 2:
 			//Check In

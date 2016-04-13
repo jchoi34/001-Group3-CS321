@@ -1,4 +1,4 @@
-package Hotel;
+
 
 
 public class Room {
@@ -22,9 +22,9 @@ public class Room {
 		this.type = type;
 	}
 
-	public void setReserved(int startDate, int endDate){
+	public void setReserved(int startDate, int endDate, boolean value){
 		for (int i = startDate; i <= endDate; i++) {
-			this.reserved[i] = true;
+			this.reserved[i] = value;
 		}
 	}
 

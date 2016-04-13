@@ -1,4 +1,4 @@
-package Hotel;
+
 
 
 public class Customer {
