@@ -17,7 +17,7 @@ public class BankingSystem
 		try
 		{
 			int month = Integer.parseInt(ccExpiration.substring(0, ccExpiration.indexOf('/'))); //Not needed, but just to be thorough
-			int year = Integer.parseInt(ccExpiration.substring(ccExpiration.indexOf('/')));
+			int year = Integer.parseInt(ccExpiration.substring(ccExpiration.indexOf('/')+1));
 			if(year < 2016)
 				throw new RuntimeException("Card Verification Error: 2");
 		}
