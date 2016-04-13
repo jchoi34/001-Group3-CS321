@@ -9,6 +9,7 @@
 ***************************************************/
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.io.*;
 
 
@@ -17,9 +18,19 @@ public class HotelSystem {
 	ArrayList<Customer> customers = new ArrayList<Customer>();
 	ManagerReport mgr = new ManagerReport();
 	String fileName;
+	List<Room> hotelRooms;
 	public static void main(String[] args){
 		HotelSystem system = new HotelSystem();
 		system.fileName = args[0];
+		// Create all rooms and put it into an array
+		int totalRooms = Framework.NUM_SINGLE_ROOMS + Framework.NUM_DOUBLE_ROOMS;	//Using Framework class static final integers????????????
+		system.hotelRooms = new ArrayList<Room>();
+
+		for (int i = 0; i < totalRooms; i++)
+		{
+			system.hotelRooms.add(new Room());
+			system.hotelRooms.get(i).setReserved(1, Framework.NUM_DAYS, false);
+		}
 		system.readInstructions(args[0]);
 	}
 	
@@ -49,7 +60,8 @@ public class HotelSystem {
 		switch (instruction){
 		case 1:
 			//Make a reservation
-			TestReservation res = new TestReservation(instructionData, customers, systemClock.currentDate, mgr);
+			//TestReservation res = new TestReservation(instructionData, customers, systemClock.currentDate, mgr);
+			MakeReservation res = new MakeReservation(instructionData, customers, systemClock.currentDate, mgr, hotelRooms);
 			break;
 		case 2:
 			//Check In
@@ -65,7 +77,7 @@ public class HotelSystem {
 			break;
 		case 4:
 			//Print Management Report
-			String report = mgr.printManagementReport(systemClock.currentDate);
+			String report = mgr.printManagementReport(systemClock.currentDate, hotelRooms);
 			fileName = fileName.substring(fileName.indexOf('/')+1);
 			String loc = String.format(System.getProperty("user.dir")+"/src/HRS_%s", fileName);
 			try {
