@@ -46,8 +46,8 @@ public class HotelSystem {
 		case 2:
 			//Check In
 			CheckIn checkInObj = new CheckIn(instructionData);
-//			if (instructionData.length > 2)
-//				checkInObj.updateCCInfo();
+			if (instructionData.length > 2)
+				checkInObj.updateCCInfo();
 			checkInObj.performCheckIn();
 			break;
 		case 3:
