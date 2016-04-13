@@ -6,7 +6,7 @@ public class CheckOut {
 	Reservation res;
 	String customerName;
 	public CheckOut(String[] instructionData){
-		this.customerName = instructionData[1];
+		this.customerName = instructionData[1]; //Sets customer name
 	}
 	
 	public void performCheckOut(){

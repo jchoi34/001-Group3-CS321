@@ -1,8 +1,16 @@
+/***************************************************
+ * HotelSystem Class
+ * @author kuntharith buon
+ * 
+ * HotelSystem.java acts as main class;
+ * Accepts the command-line arguments, reads and performs the instruction dataset
+ * respectively according to the instruction number
+ * 
+***************************************************/
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.*;
 
-//Main Class
 
 public class HotelSystem {
 	Date systemClock = new Date();

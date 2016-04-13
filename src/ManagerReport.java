@@ -1,3 +1,9 @@
+/***************************************************
+ * ManagerReport
+ * @author kuntharith buon
+ * 
+ * ManagerReport class is responsible for producing the management report
+***************************************************/
 import java.util.ArrayList;
 
 public class ManagerReport{
@@ -20,11 +26,11 @@ public class ManagerReport{
 		}
 		
 	}
-	
-	public String printManagementReport(int date){
+	//Simple Formatting of the String to produce the expected output
+	public String printManagementReport(int date){ 
 		StringBuilder sb = new StringBuilder();
 		int count = 0;
-		for (int i = 1; i <= date; i++){
+		for (int i = 1; i <= date; i++){ 
 			sb.append(String.format("\n==================January %d, 2016==================\n", i));
 				for (int x = count; x < reportObj.size(); x++){
 					if (reportObj.get(x).date != i){
@@ -43,7 +49,7 @@ public class ManagerReport{
 		return sb.toString();
 	}
 	
-	public void createNewReportObj(int date, Customer cus){
+	public void createNewReportObj(int date, Customer cus){ //Creates and add new report object into the ArrayList
 		rptObj.addReportObject(date, cus);
 	}
 	
