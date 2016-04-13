@@ -1,10 +1,11 @@
 import java.io.IOException;
-
+import java.util.ArrayList;
 //Main Class
 
 public class HotelSystem {
 	Date systemClock = new Date();
-	
+	ArrayList<Customer> customers = new ArrayList<Customer>();
+	ManagerReport mgr = new ManagerReport();
 	public static void main(String[] args){
 		HotelSystem system = new HotelSystem();
 		system.readInstructions(args[0]);
@@ -37,7 +38,7 @@ public class HotelSystem {
 		switch (instruction){
 		case 1:
 			//Make a reservation
-			TestReservation res = new TestReservation(instructionData);
+			TestReservation res = new TestReservation(instructionData, customers, systemClock.currentDate, mgr);
 			break;
 		case 2:
 			//Check In
@@ -53,15 +54,15 @@ public class HotelSystem {
 			break;
 		case 4:
 			//Print Management Report
+			mgr.printManagementReport(systemClock.currentDate);
 			break;
 		case 5:
 			//Day Change
-			systemClock.dayChange();
+			systemClock.dayChange(customers);
 			break;
 		case 6: 
-			
 			//6PM Alarm
-			
+			systemClock.performSixPMCheck(customers);
 			break;
 		}
 	}
