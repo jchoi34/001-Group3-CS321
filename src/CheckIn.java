@@ -95,9 +95,16 @@ public class CheckIn {
 		if (validateUserInformation()){ //Customer Found
 			int currentResStatus = res.getStatus();
 			//Not Checked-In or Has not Checked-Out
+<<<<<<< HEAD
 			if (currentResStatus != Framework.STATUS_CHECKED_IN || currentResStatus != Framework.STATUS_CHECKED_OUT){ 
 				res.setStatus(Framework.STATUS_CHECKED_IN);
 				System.out.println("Success: Check-In Successful");
+=======
+			if (currentResStatus != Framework.STATUS_CHECKED_IN && currentResStatus != Framework.STATUS_CHECKED_OUT){ 
+				res.setStatus(Framework.STATUS_CHECKED_IN); //Sets the status to checked-in
+				Framework.modifyReservation(res.getReservationID(), res);
+				System.out.println("Success: Check-In Successful"); 
+>>>>>>> 2887465e5abfcc4d6c749e628b71fbb6353092e8
 			}
 			else{
 				System.out.println("Failed: Customer has already checked-in/checked-out");
