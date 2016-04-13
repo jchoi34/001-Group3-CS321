@@ -13,7 +13,7 @@ public class CheckOut {
 		}
 	}
 	
-	public boolean performCheckIn(){
+	public boolean performCheckOut(){
 		if (validateUserInformation(customerName)){ //Customer Found
 			//Not Checked-In or Has not Checked-Out
 			if (reservation.getStatus() == 2){  // if user is checked in
