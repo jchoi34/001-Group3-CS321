@@ -14,7 +14,7 @@ STATUS_MUST_PAY - The status code for a must pay reservation
 *******************************************************************************/
  
  /*****************************************************************************
-  * Make Reservation Array of Strings Format
+  * Make Reservation Array of Strings Format - Input
   * @author Mars
   *
   * 0 - 1 = 1
@@ -29,7 +29,23 @@ STATUS_MUST_PAY - The status code for a must pay reservation
   * 9 - Credit Card Expiration Date (if 1 above) = 10/2016
   * 10 - Credit Card Number (if 1 above) = 1234 1234 1234 1234 12
   *******************************************************************************/
- 
+
+
+  /*****************************************************************************
+  * Reservation Details
+  * @author Mars
+  * 
+  * 0 - reservationID	:	Integer - Unique ID for reservation (assigned by Framework)
+  * 1 - status			:	Integer - 1=Reserved, 2=Checked In, 3=Checked Out, 4=No Show, 5=Must Pay
+  * 2 - startDate		:	Integer - The start date of the reservation (1-31)
+  * 3 - endDate			:	Integer - The end date of the reservation (1-31)
+  * 4 - roomType		:	Integer - The room type (1 for single, 2 for double)
+  * 5 - numOccupants	:	Integer - The number of occupants in the room
+  * 6 - guaranteed		:	Boolean - True if the reservation is guaranteed with a credit card, false if not guaranteed
+  * 7 - roomNumber		:	Integer - The room number assigned to this reservation
+  * 8 - customerID		:	Integer - The customer ID for the customer who made this reservation
+  *******************************************************************************/
+
  /******************************************************************************
   * Make Reservation pseudo code
   * @author Mars
@@ -73,10 +89,79 @@ STATUS_MUST_PAY - The status code for a must pay reservation
 
 
 public class MakeReservation {
-    public static void main(String[] args) {
-        System.out.println("Hello, World");
-        
-        
-    }
-
+// Variables
+	int status, cusID, startDate, endDate, day, roomtype, occupants, roomNum;
+	boolean guaranteed, available;
+	Customer cus;
+	Reservation res;
+	
+	public MakeReservation(String [] res_info) {
+		status = 1;
+		roomtype = Integer.parseInt(res_info[5]);
+		occupants = Integer.parseInt(res_info[6]);
+		startDate = Integer.parseInt(res_info[3]);
+		endDate = Integer.parseInt(res_info[4]);
+		day = startDate;
+		available = true;
+		
+		
+		
+		// Check Customer Information
+		if (Framework.getCustomerByName(res_info[1]) == Null)	// Check if customer exists
+		{
+			cus = new Customer();
+			cus.setName(res_info[1]);
+			cus.setAddress(res_info[2]);
+			
+			if (res_info[7] == "1")
+			{
+				cus.setCCType(res_info[8]);
+				cus.setCCExpiration(res_info[9]);
+				cus.setCCNumber(res_info[10]);
+			}
+		}
+		
+		cusID = cus.getCustomerID();
+		
+		// Set guaranteed to boolean type given res_info[7]
+		if (res_info[7] == "0")
+		{
+			guaranteed = false;
+		}
+		else
+		{
+			guaranteed = true;
+		}
+		
+		// NEED TO DEFINE ROOM NUMBER
+		
+		
+		
+		// Check Room Availability
+		for (int i = (endDate - startDate)+1; i >0; i--)
+		{
+			// Check if room is available on this day
+			if (Room_Available)
+			{
+				available = available && true;
+			}
+			else
+			{
+				available = available && false;
+			}
+		}
+		
+		if (available)
+		{
+			// Make Reservation
+			
+			// Get Reservation ID
+			
+			// Reduce NUM_*_ROOMS?... this is
+		}
+		
+		
+		
+	}
 }
+	
