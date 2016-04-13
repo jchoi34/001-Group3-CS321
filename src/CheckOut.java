@@ -1,8 +1,8 @@
 
 public class CheckOut {
 
-	protected boolean validation;
-	protected Reservation res;
+	protected boolean validation, checkOutResp;
+	protected Reservation reservation;
 	protected Customer customer;
 	protected String customerName;
 	
@@ -10,15 +10,25 @@ public class CheckOut {
 	public CheckOut(String[] instructionData){
 		if(instructionData[1] != null){
 			this.customerName = instructionData[1];
-			validateUserInformation(customerName);
 		}
+	}
+	
+	public boolean performCheckIn(){
+		if (validateUserInformation(customerName)){ //Customer Found
+			//Not Checked-In or Has not Checked-Out
+			if (reservation.getStatus() == 2){  // if user is checked in
+				reservation.setStatus(3); // check out
+				checkOutResp = true;
+			}
+		}
+		return checkOutResp;
 	}
 	
 	boolean validateUserInformation(String name){
 		try {
 			//Search for Customer and Reservation
 			customer = Framework.getCustomerByName(name); // find customer by name
-			res = Framework.getReservationByCID(customer.customerID);  // find customer by id
+			reservation = Framework.getReservationByCID(customer.customerID);  // find customer by id
 			validation = true;
 		}
 		catch(NullPointerException e){
