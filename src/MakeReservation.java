@@ -1,21 +1,4 @@
-
-
 import java.util.*;
-
-/******************************************************************************
- * Attribute and Description
-  
-NUM_SINGLE_ROOMS - The number of single rooms available in the hotel
-NUM_DOUBLE_ROOMS - The number of double rooms available in the hotel
-NUM_DAYS - The number of days that the hotel reservation system must support (January=31)
-SINGLE_RATE - The nightly rate for a single room (in dollars)
-DOUBLE_RATE - The nightly rate for a double room (in dollars)
-STATUS_RESERVED - The status code for a reserved reservation
-STATUS_CHECKED_IN - The status code for a checked in reservation
-STATUS_CHECKED_OUT - The status code for a checked out reservation
-STATUS_NO_SHOW - The status code for a no show reservation
-STATUS_MUST_PAY - The status code for a must pay reservation
-*******************************************************************************/
  
  /*****************************************************************************
   * Make Reservation Array of Strings Format - Input
@@ -35,7 +18,7 @@ STATUS_MUST_PAY - The status code for a must pay reservation
   *******************************************************************************/
 
   /*****************************************************************************
-  * Reservation Details
+  * Reservation Details - Output
   * @author Mars
   * 
   * 0 - reservationID	:	Integer - Unique ID for reservation (assigned by Framework)
@@ -50,7 +33,7 @@ STATUS_MUST_PAY - The status code for a must pay reservation
   *******************************************************************************/
 
  /******************************************************************************
-  * Make Reservation pseudo code
+  * Make Reservation - Pseudocode
   * @author Mars
   * 
   * Needs
@@ -90,55 +73,43 @@ STATUS_MUST_PAY - The status code for a must pay reservation
 
 public class MakeReservation {
 // Variables
-	int status, cusID, startDate, endDate, day, roomtype, occupants, roomNum, resID;
-	boolean guaranteed, available, found;
-	Customer cus;
-	Reservation res;
+	String customerName, address, ccType, ccExpiration, ccNumber;
+	int startDate, endDate, roomtype, occupants, status, cusID, roomNum, resID;
+	boolean guaranteed;
+	//public TestReservation(String[] instructionData, ArrayList<Customer> customers, int date, ManagerReport mgr){
 	
-	public MakeReservation(String [] res_info, List<Room> hotelRooms) {
+	public MakeReservation(String [] res_info, ArrayList<Customer> customers, int date, ManagerReport mgr, List<Room> hotelRooms) {
 		status = 1;
 		roomtype = Integer.parseInt(res_info[5]);
 		occupants = Integer.parseInt(res_info[6]);
 		startDate = Integer.parseInt(res_info[3]);
 		endDate = Integer.parseInt(res_info[4]);
-		day = startDate;
-		available = true;
-		found = false;
+		int day = startDate;
+		boolean available = true;
+		boolean found = false;
 				
-		// Check Customer Information
-		if (Framework.getCustomerByName(res_info[1]) == null)	// Check if customer exists
-		{
-			cus = new Customer();
-			cus.setName(res_info[1]);
-			cus.setAddress(res_info[2]);
-			
-			if (res_info[7] == "1")
-			{
-				cus.setCCType(res_info[8]);
-				cus.setCCExpiration(res_info[9]);
-				cus.setCCNumber(res_info[10]);
-			}
-			
-			cusID = Framework.storeCustomer(cus);
-		}
-		else
-		{
-			// Framework.getCustomerByName returns cus
-			cusID = Framework.getCustomerByName(res_info[1]).getCustomerID();
-
-		}
+		// Customer Information
+		Customer cus = new Customer();
+		cus.setName(res_info[1]);
+		cus.setAddress(res_info[2]);
 		
-		System.out.println("Make Reservation request for " + cus.getName() + ":");
-				
-		// Set guaranteed to boolean type given res_info[7]
-		if (res_info[7] == "0")
+		if (res_info[7] == "1")
 		{
-			guaranteed = false;
+			cus.setCCType(res_info[8]);
+			cus.setCCExpiration(res_info[9]);
+			cus.setCCNumber(res_info[10]);
+			guaranteed = true;
 		}
 		else
 		{
 			guaranteed = true;
 		}
+				
+		cus.setCustomerID(Framework.storeCustomer(cus));
+
+		
+		System.out.println("Make Reservation request for " + cus.getName() + ":");
+				
 		
 		// Check Room Availability
 		for (int r=0; (r < hotelRooms.size()) && !found; r++)
@@ -164,6 +135,9 @@ public class MakeReservation {
 				{
 					found = true;
 					roomNum = hotelRooms.get(r).getRoomNum();
+					
+					// Book room
+					hotelRooms.get(r).setReserved(startDate, endDate, true);
 				}
 			}
 		}
@@ -172,7 +146,7 @@ public class MakeReservation {
 		if (found)
 		{
 			// Make Reservation
-			res = new Reservation();
+			Reservation res = new Reservation();
 			res.setStatus(1);
 			res.setStartDate(startDate);
 			res.setEndDate(endDate);
@@ -182,10 +156,10 @@ public class MakeReservation {
 			res.setRoomNumber(roomNum);
 			res.setCustomerID(cusID);
 			
-			// Get Reservation ID?
-			resID = Framework.storeReservation(res);
-			res.setReservationID(resID);		// redundant?
+			// Get Reservation ID
+			res.setReservationID(Framework.storeReservation(res));
 			
+			// Outputs
 			System.out.println("Reservation: Success");
 			if (guaranteed)
 			{
