@@ -95,8 +95,8 @@ public class CheckIn {
 		if (validateUserInformation()){ //Customer Found
 			int currentResStatus = res.getStatus();
 			//Not Checked-In or Has not Checked-Out
-			if (currentResStatus != 2 || currentResStatus != 3){ 
-				res.setStatus(2);
+			if (currentResStatus != Framework.STATUS_CHECKED_IN || currentResStatus != Framework.STATUS_CHECKED_OUT){ 
+				res.setStatus(Framework.STATUS_CHECKED_IN);
 				System.out.println("Success: Check-In Successful");
 			}
 			else{
@@ -110,8 +110,8 @@ public class CheckIn {
 	
 	public void updateCCInfo(){
 		//Call Bank to validate CC
-		int x = 0;
-		if (x==1){ //CC is valid
+		BankingSystem bank = new BankingSystem();
+		if (bank.validateCreditCard(ccType, Integer.parseInt(ccNumber), ccExpiration)){ //CC is valid
 			cus.setCCType(this.ccType);
 			cus.setCCNumber(this.ccNumber);
 			cus.setCCExpiration(this.ccExpiration);

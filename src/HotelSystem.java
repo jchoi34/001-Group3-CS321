@@ -4,11 +4,11 @@ import java.io.IOException;
 
 public class HotelSystem {
 	Date systemClock = new Date();
-	boolean checkInStatus;
 	
 	public static void main(String[] args){
 		HotelSystem system = new HotelSystem();
 		system.readInstructions(args[0]);
+		
 	}
 	
 	void readInstructions(String fileName){
