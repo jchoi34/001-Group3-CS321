@@ -101,6 +101,7 @@ public class CheckIn {
 			//Not Checked-In or Has not Checked-Out
 			if (currentResStatus != Framework.STATUS_CHECKED_IN || currentResStatus != Framework.STATUS_CHECKED_OUT){ 
 				res.setStatus(Framework.STATUS_CHECKED_IN); //Sets the status to checked-in
+				Framework.modifyReservation(res.getReservationID(), res);
 				System.out.println("Success: Check-In Successful"); 
 			}
 			else{
@@ -122,6 +123,7 @@ public class CheckIn {
 			cus.setCCType(this.ccType);
 			cus.setCCNumber(this.ccNumber);
 			cus.setCCExpiration(this.ccExpiration);
+			Framework.modifyCustomer(cus.getCustomerID(), cus);
 			System.out.println("Success: Credit Card Information Has Been Updated");
 		}
 	}
