@@ -49,7 +49,7 @@ public class TestReservation {
 		res.setStartDate(checkInDate);
 		res.setEndDate(checkOutDate);
 		res.setCustomerID(cus.getCustomerID());
-		res.setStatus(guaranteed);
+		res.setGuaranteed(guaranteed);
 		int resID = Framework.storeReservation(res);
 		mgr.createNewReportObj(date, cus);
 		System.out.println(customerName + " " + res.status);

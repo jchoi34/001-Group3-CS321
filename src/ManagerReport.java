@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class ManagerReport{
 	ArrayList<ReportObject> reportObj = new ArrayList<ReportObject>();
+	ReportObject rptObj = new ReportObject();
 	class ReportObject{
 		int date;
 		Customer cus; 
@@ -22,13 +23,21 @@ public class ManagerReport{
 	
 	public void printManagementReport(int date){
 		StringBuilder sb = new StringBuilder();
+		int count = 0;
 		for (int i = 1; i <= date; i++){
 			sb.append(String.format("==================January %d, 2015==================", i));
-				for (int x = 0; x < reportObj.size(); x++){
+				for (int x = count; x < reportObj.size(); x++){
 					System.out.println(reportObj.get(x).cus.getName() + " " + reportObj.get(x).date);
-					if (reportObj.get(x).date != i)
+					if (reportObj.get(x).date != i){
+						count = x+1;
 						break;
+					}
 					sb.append(String.format("\nMake Reservation request for %s", reportObj.get(x).cus.getName()));
+					sb.append(String.format("\nGuaranteed: %s", (1 == Framework.getReservationByCID(reportObj.get(x).cus.getCustomerID()).getGuaranteed())));
+					sb.append(String.format("\nCheck In: January %d, 2015", Framework.getReservationByCID(reportObj.get(x).cus.getCustomerID()).getStartDate()));
+					sb.append(String.format("\nCheck In: January %d, 2015\n", Framework.getReservationByCID(reportObj.get(x).cus.getCustomerID()).getEndDate()));
+					if (Framework.getReservationByCID(reportObj.get(x).cus.getCustomerID()).getStatus() == Framework.STATUS_NO_SHOW)
+						sb.append(String.format("\n%s did not show.", reportObj.get(x).cus.getName()));
 				}
 			sb.append("\n");
 		}
@@ -36,7 +45,7 @@ public class ManagerReport{
 	}
 	
 	public void createNewReportObj(int date, Customer cus){
-		new ReportObject().addReportObject(date, cus);
+		rptObj.addReportObject(date, cus);
 	}
 	
 }

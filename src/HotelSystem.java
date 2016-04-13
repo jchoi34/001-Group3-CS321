@@ -54,7 +54,7 @@ public class HotelSystem {
 			break;
 		case 4:
 			//Print Management Report
-			new ManagerReport().printManagementReport(systemClock.currentDate);
+			mgr.printManagementReport(systemClock.currentDate);
 			break;
 		case 5:
 			//Day Change
