@@ -7,7 +7,7 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 1. Clone the repository to your local hard drive<br />
     `git clone https://github.com/jchoi34/001-Group7-CS321.git`
 2. Checkout the tag to be graded<br />
-   `git checkout tags/v1.0`
+   `git checkout tags/v1.1`
 3. Move into src folder located inside the repository<br />
    `cd 001-Group7-CS321/src/`
 4. Compile the java files<br />
