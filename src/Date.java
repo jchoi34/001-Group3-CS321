@@ -19,7 +19,7 @@ public class Date {
 	public void performSixPMCheck(ArrayList<Customer> customers){
 		for (int i = 0; i < customers.size(); i++){
 			Reservation res = Framework.getReservationByCID(customers.get(i).getCustomerID()); //Gets customer reservation
-			if (currentDate >= res.getStartDate()) //Checks to see if customer checks in appropriately 
+			if (currentDate >= res.getStartDate() && res.getStatus() != Framework.STATUS_CHECKED_IN) //Checks to see if customer checks in appropriately 
 				res.setStatus(Framework.STATUS_NO_SHOW);
 			Framework.modifyReservation(res.getReservationID(), res); //Updates the reservation
 		}

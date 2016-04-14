@@ -105,7 +105,7 @@ public class CheckIn {
 			}
 		}
 		else{
-			System.out.println("Failed: Customer Not Found");
+			System.out.println("Failed: " + customerName+ " Not Found");
 		}
 	}
 	
