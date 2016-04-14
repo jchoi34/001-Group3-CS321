@@ -80,7 +80,7 @@ public class ManagerReport{
 		sb.append(String.format("\nSingle Rooms Reserved: %d", singleCount));
 		sb.append(String.format("\nDouble Rooms Reserved: %d", doubleCount));
 		sb.append(String.format("\nOccupancy Rate: %d%%", (singleCount+doubleCount)/10 * 100));
-		sb.append(String.format("\nTotal Revenue: $%.2f", totalRev));
+		sb.append(String.format("\nTotal Revenue: $%.2f\n", totalRev));
 		
 		return sb.toString();
 	}
