@@ -13,14 +13,14 @@ import java.util.List;
 import java.io.*;
 
 
-public class HotelSystem {
+public class HRS {
 	Date systemClock = new Date();
 	ArrayList<Customer> customers = new ArrayList<Customer>();
 	ManagerReport mgr = new ManagerReport();
 	String fileName;
 	List<Room> hotelRooms;
 	public static void main(String[] args){
-		HotelSystem system = new HotelSystem();
+		HRS system = new HRS();
 		system.fileName = args[0];
 		// Create all rooms and put it into an array
 		int totalRooms = Framework.NUM_SINGLE_ROOMS + Framework.NUM_DOUBLE_ROOMS;	//Using Framework class static final integers????????????
