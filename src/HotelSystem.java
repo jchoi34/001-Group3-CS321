@@ -79,7 +79,7 @@ public class HotelSystem {
 			//Print Management Report
 			String report = mgr.printManagementReport(systemClock.currentDate, hotelRooms);
 			fileName = fileName.substring(fileName.indexOf('/')+1);
-			String loc = String.format(System.getProperty("user.dir")+"/src/HRS_%s", fileName);
+			String loc = String.format(System.getProperty("user.dir")+"/HRS_%s", fileName);
 			try {
 				File file = new File(loc);
 				if (!file.exists())
