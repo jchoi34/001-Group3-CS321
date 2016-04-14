@@ -11,4 +11,4 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 3. Compile the java files<br />
    `javac *.java`
 4. Run the program<br />
-   `java HotelSystem [location of instruction input]`
+   `java HRS [location of instruction input]`
