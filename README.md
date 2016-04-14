@@ -13,4 +13,6 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 4. Run the program<br />
    `java HRS [fileName]`
    Example:
-   `java HRS sample1.txt`
+   `java HRS sample1.txt`<br />
+5. See Output<br />
+   `cat HRS_fileName.txt`
