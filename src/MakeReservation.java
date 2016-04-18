@@ -142,8 +142,6 @@ public class MakeReservation {
 		}
 
 		
-		if (found)
-		{
 			// Make Reservation
 			Reservation res = new Reservation();
 			res.setStatus(1);
@@ -158,7 +156,9 @@ public class MakeReservation {
 			// Get Reservation ID
 			res.setReservationID(Framework.storeReservation(res));
 			
-			// Outputs
+		// Outputs
+		if (res.getStatus() == 1)
+		{
 			System.out.println("Reservation: Success");
 			if (guaranteed)
 			{
@@ -171,6 +171,7 @@ public class MakeReservation {
 			
 			System.out.println("Check In: January " + startDate + ", 2015" ); 	// Output guideline says to use 2015 @_@
 			System.out.println("Check Out: January " + endDate + ", 2015" ); 	// Output guideline says to use 2015 @_@
+
 		}
 		else
 		{
@@ -179,6 +180,9 @@ public class MakeReservation {
 			System.out.println("Check In:" );
 			System.out.println("Check Out:" );
 		}
+		
+
+
 	}
 }
 	
