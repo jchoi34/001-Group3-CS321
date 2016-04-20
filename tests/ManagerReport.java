@@ -48,7 +48,7 @@ public class ManagerReport{
 					sb.append(String.format("\nMake Reservation request for %s", reportObj.get(x).cus.getName()));
 					sb.append(String.format("\nGuaranteed: %s", Framework.STATUS_RESERVED == res.getGuaranteed() ? "True": "False"));
 					sb.append(String.format("\nCheck In: January %d, 2015", res.getStartDate()));
-					sb.append(String.format("\nCheck In: January %d, 2015\n", res.getEndDate()));
+					sb.append(String.format("\nCheck Out: January %d, 2015\n", res.getEndDate()));
 					System.out.println("HELLO WORLD: " + res.getStatus());
 					if (res.getStatus() == Framework.STATUS_NO_SHOW)
 						sb.append(String.format("\n%s did not show.", reportObj.get(x).cus.getName()));
