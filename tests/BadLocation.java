@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class BadLocation {
 	HRS hrs;
-	String fileLocationEclipse = System.getProperty("user.dir") + "/src/TestFiles/ManagerReport/";
+	String fileLocationEclipse = System.getProperty("user.dir") + "/TestFiles/ManagerReport/";
 	String fileLocation = System.getProperty("user.dir")+"/TestFiles/ManagerReport/";
 	String readFile(String fileName) throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader(fileLocation+fileName));

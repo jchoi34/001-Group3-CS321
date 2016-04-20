@@ -13,7 +13,7 @@ public class ManagerReportTest {
 	HRS hrs;
 	ManagerReport mgr;
 	int date;
-	String fileLocationEclipse = System.getProperty("user.dir") + "/src/TestFiles/ManagerReport/";
+	String fileLocationEclipse = System.getProperty("user.dir") + "/TestFiles/ManagerReport/";
 	String fileLocation = System.getProperty("user.dir")+"/TestFiles/ManagerReport/";
 	List<Room> rooms = new ArrayList<Room>();
 	
@@ -34,18 +34,18 @@ public class ManagerReportTest {
 		}
 	}
 	
-	@org.junit.After
-	public void tearDown(){
-		for (int i = 0; i < hrs.customers.size(); i++){
-			Customer cus = Framework.getCustomerByID(hrs.customers.get(i).customerID);
-			Framework.deleteReservation(Framework.getReservationByCID(cus.customerID).getReservationID());
-			Framework.deleteCustomer(cus.customerID);
-		}
-		hrs.customers.clear();
-	}
+//	@org.junit.After
+//	public void tearDown(){
+//		for (int i = 0; i < hrs.customers.size(); i++){
+//			Customer cus = Framework.getCustomerByID(hrs.customers.get(i).customerID);
+//			Framework.deleteReservation(Framework.getReservationByCID(cus.customerID).getReservationID());
+//			Framework.deleteCustomer(cus.customerID);
+//		}
+//		hrs.customers.clear();
+//	}
 	
 	String readFile(String fileName) throws IOException{
-		BufferedReader br = new BufferedReader(new FileReader(fileLocationEclipse+fileName));
+		BufferedReader br = new BufferedReader(new FileReader(fileLocation+fileName));
 		try{
 			StringBuilder sb = new StringBuilder();
 			String line = br.readLine();
@@ -64,7 +64,7 @@ public class ManagerReportTest {
 	
 	void readInstructions(String fileName){
 		try {
-			Framework.init(fileLocationEclipse+fileName);
+			Framework.init(fileLocation+fileName);
 		}
 		catch(IOException e){
 			return;
