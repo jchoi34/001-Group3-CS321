@@ -1,0 +1,5 @@
+INTERESTING SCENARIO
+** Interesting Scenario To Test
+EITHER:
+- Customer has an expired credit card
+- Customer is an 'imaginary person; someone checks in but there are zero occupants listed for the room
