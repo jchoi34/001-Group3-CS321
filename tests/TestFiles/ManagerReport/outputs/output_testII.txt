@@ -1,0 +1,29 @@
+
+==================January 1, 2015==================
+
+Make Reservation request for Bernard L. Silver
+Guaranteed: True
+Check In: January 1, 2015
+Check In: January 3, 2015
+
+
+==================January 2, 2015==================
+
+Make Reservation request for Paul H. Grant
+Guaranteed: True
+Check In: January 3, 2015
+Check In: January 5, 2015
+
+
+==================January 3, 2015==================
+
+
+==================January 4, 2015==================
+
+
+Management report for 1/4/2015
+Number of Reservations: 1
+Single Rooms Reserved: 1
+Double Rooms Reserved: 0
+Occupancy Rate: 10%
+Total Revenue: $80.00
