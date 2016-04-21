@@ -32,7 +32,7 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 4. View Output<br />
    `cat HRS_fileName.txt`
 
-# Instructions For Running ManagerReport and Bad Location (System Integration) Test
+# Instructions For Tests
 
 1. Clone the repository to your local hard drive<br />
     `git clone https://github.com/jchoi34/001-Group7-CS321.git`
@@ -44,3 +44,9 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
    `java -cp .:junit-cs321.jar ManagerReportTest`
 5. Run Bad Location Test<br />
    `java -cp .:junit-cs321.jar BadLocation`
+6. Run Banking System Test<br />
+   `java -cp .:junit-cs321.jar BankingSystemTests`
+7. Run Check-In Test<br />
+   `cd  CheckInTest`<br />
+   `javac *.java`<br />
+   `java java HRS_CheckInTesting_Unit`
