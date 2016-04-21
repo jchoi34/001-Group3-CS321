@@ -9,7 +9,7 @@ public class BankingSystemTests {
 	  }
 	
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest1(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest1(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -29,7 +29,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest2(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest2(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -49,7 +49,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest3(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest3(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -69,7 +69,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest4(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest4(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -89,7 +89,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest5(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest5(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -111,7 +111,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest6(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest6(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -134,7 +134,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest7(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest7(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -158,7 +158,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest8(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest8(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -182,7 +182,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest9(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest9(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -206,7 +206,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest10(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest10(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -230,7 +230,7 @@ public class BankingSystemTests {
 	    }
 }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest11(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest11(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -254,7 +254,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest12(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest12(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -278,7 +278,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest13(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest13(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -302,7 +302,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest14(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest14(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -326,7 +326,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest15(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest15(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -350,7 +350,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest16(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest16(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -374,7 +374,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest17(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest17(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -398,7 +398,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest18(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest18(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -422,7 +422,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest19(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest19(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;
@@ -446,7 +446,7 @@ public class BankingSystemTests {
 	    }
 	  }
 	  @SuppressWarnings("unchecked")
-	  @Test(timeout=1000) public void BankingSystemTest20(){
+	  @org.junit.Test(timeout=1000) public void BankingSystemTest20(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
 	  BankingSystem bank = new BankingSystem();
 	  String ccType;

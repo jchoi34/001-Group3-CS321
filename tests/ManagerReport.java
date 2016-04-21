@@ -29,19 +29,22 @@ public class ManagerReport{
 		
 	}
 	//Simple Formatting of the String to produce the expected output
-	public String printManagementReport(int date, List<Room> rooms){ 
+	public String printManagementReport(int reportDate, int date, List<Room> rooms){ 
+		if (reportDate < 1 || reportDate > 31)
+			return "Error: Invalid Date";
+		else if (reportDate > date)
+			return "Error: Trying to Time Travel";
 		StringBuilder sb = new StringBuilder();
 		int count = 0;
-		for (int i = 1; i <= date; i++){ 
+		for (int i = 1; i <= reportDate; i++){ 
 			sb.append(String.format("\n==================January %d, 2015==================\n", i));
 				for (int x = count; x < reportObj.size(); x++){
 					if (reportObj.get(x).date != i){
-						count = x+1;
-						break;
+						continue;
 					}
 					Reservation res = Framework.getReservationByCID(reportObj.get(x).cus.getCustomerID());
 					sb.append(String.format("\nMake Reservation request for %s", reportObj.get(x).cus.getName()));
-					sb.append(String.format("\nGuaranteed: %s", (Framework.STATUS_RESERVED == res.getGuaranteed())));
+					sb.append(String.format("\nGuaranteed: %s", Framework.STATUS_RESERVED == res.getGuaranteed() ? "True": "False"));
 					sb.append(String.format("\nCheck In: January %d, 2015", res.getStartDate()));
 					sb.append(String.format("\nCheck Out: January %d, 2015\n", res.getEndDate()));
 					if (res.getStatus() == Framework.STATUS_NO_SHOW)
@@ -75,7 +78,7 @@ public class ManagerReport{
 		
 		double totalRev = (Framework.SINGLE_RATE*singleCount) + (Framework.DOUBLE_RATE*doubleCount);
 		
-		sb.append(String.format("\nManagement report for 1/%d/2015", date));
+		sb.append(String.format("\nManagement report for 1/%d/2015", reportDate));
 		sb.append(String.format("\nNumber of Reservations: %d", resCount));
 		sb.append(String.format("\nSingle Rooms Reserved: %d", singleCount));
 		sb.append(String.format("\nDouble Rooms Reserved: %d", doubleCount));
