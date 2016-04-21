@@ -1,0 +1,34 @@
+import static org.junit.Assert.*;
+
+public class MakeReservationTests{
+
+	@Test
+	public void fileReadCheck()
+	{
+		HRS system = new HRS();
+		ArrayList<Customer> customers = new ArrayList<Customer>();
+		int totalRooms = Framework.NUM_SINGLE_ROOMS + Framework.NUM_DOUBLE_ROOMS;
+		system.hotelRooms = new ArrayList<Room>();
+
+		for (int i = 0; i < totalRooms; i++)
+		{
+			system.hotelRooms.add(new Room());
+			system.hotelRooms.get(i).setReserved(1, Framework.NUM_DAYS, false);
+		}
+
+		String[] str = {"Bernard L. Silver", "3777 Franklin Avenue, Houston, TX 78401","1","3","1","2","1","Visa","2/2016","4716001921994146670"};
+		ManagerReport mgr = new ManagerReport();
+		MakeReservation test = new MakeReservation(str, customers, 1, mgr, hotelRooms);
+
+		assertEquals("Bernard L. Silver", test.customerName);
+		assertEquals("3777 Franklin Avenue, Houston, TX 78401", test.address);
+		assertEquals(1, test.checkInDate);
+		assertEquals(3, test.checkOutDate);
+		assertEquals(1, test.roomType);
+		assertEquals(2, test.numOfOccupants);
+		assertEquals(1, test.guaranteed);
+		assertEquals("Visa", test.ccType);
+		assertEquals("2/2016", test.ccExpiration);
+		assertEquals("4716001921994146670", test.ccNumber);
+	}	
+}
