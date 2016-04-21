@@ -1,3 +1,4 @@
+public class insert CheckOut.class
 import static org.junit.*;
 import org.junit.Test;
 
