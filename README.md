@@ -31,3 +31,16 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
    `java HRS sample1.txt`<br />
 4. View Output<br />
    `cat HRS_fileName.txt`
+
+# Instructions For Running ManagerReport and Bad Location (System Integration) Test
+
+1. Clone the repository to your local hard drive<br />
+    `git clone https://github.com/jchoi34/001-Group7-CS321.git`
+2. Move into tests folder
+   `cd tests`
+3. Compile
+   `javac -cp .:junit-cs321.jar *.java`
+4. Run ManagerReport Tests
+   `java -cp .:junit-cs321.jar ManagerReportTest`
+5. Run Bad Location Test
+   `java -cp .:junit-cs321.jar BadLocation`
