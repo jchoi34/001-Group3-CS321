@@ -133,7 +133,6 @@ public class ManagerReportTest {
 		//READ INSTRUCTIONS
 		String expect = sb.toString();
 		String actual = mgr.printManagementReport(date, hrs.systemClock.currentDate, rooms);
-		System.out.println(expect + "\n" + actual);
 		assertEquals(expect, actual);
 	}
 	

@@ -42,14 +42,11 @@ public class ManagerReport{
 					if (reportObj.get(x).date != i){
 						continue;
 					}
-					System.out.println("RES : " + reportObj.get(x).cus.getName());
 					Reservation res = Framework.getReservationByCID(reportObj.get(x).cus.getCustomerID());
-					System.out.println(res);
 					sb.append(String.format("\nMake Reservation request for %s", reportObj.get(x).cus.getName()));
 					sb.append(String.format("\nGuaranteed: %s", Framework.STATUS_RESERVED == res.getGuaranteed() ? "True": "False"));
 					sb.append(String.format("\nCheck In: January %d, 2015", res.getStartDate()));
 					sb.append(String.format("\nCheck Out: January %d, 2015\n", res.getEndDate()));
-					System.out.println("HELLO WORLD: " + res.getStatus());
 					if (res.getStatus() == Framework.STATUS_NO_SHOW)
 						sb.append(String.format("\n%s did not show.", reportObj.get(x).cus.getName()));
 				}
