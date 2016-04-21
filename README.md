@@ -36,6 +36,8 @@ https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
 1. Clone the repository to your local hard drive<br />
     `git clone https://github.com/jchoi34/001-Group7-CS321.git`
+1a. Checkout the tag to be graded<br />
+   `git checkout tags/Assignment6Submission`
 2. Move into tests folder<br />
    `cd tests`
 3. Compile<br />
