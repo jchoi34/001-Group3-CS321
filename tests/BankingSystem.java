@@ -23,10 +23,29 @@ public class BankingSystem
 		}
 		catch (StringIndexOutOfBoundsException e){throw new RuntimeException("Card Verification Error: 2");}
 
+		int sum = 0;
+        boolean c = false;
+        for (int i = ccNumber.length() - 1; i >= 0; i--)
+        {
+                int n = Integer.parseInt(ccNumber.substring(i, i + 1));
+                if (c)
+                {
+                        n *= 2;
+                        if (n > 9)
+                        {
+                                n = (n % 10) + 1;
+                        }
+                }
+                sum += n;
+                c = !c;
+        }
+        return (sum % 10 == 0);
+		
 		//Card number check
-		int last = ccNumber.charAt(ccNumber.length()) - '0';
+		
+		/*int last = ccNumber.charAt(ccNumber.length()) - '0';
 		ccNumber = ccNumber.substring(0,ccNumber.length());
-
+		
 		String reversed = "";	//Reverse the remaining numbers
 		for(int r = 0; r < ccNumber.length(); r++)
 			reversed = reversed + ccNumber.charAt(r);
@@ -52,7 +71,7 @@ public class BankingSystem
 
 		if(sum % 10 != 0)	//Check %10 (should be 0)
 			throw new RuntimeException("Card Verification Error: 3");
+		return verified;*/
 		
-		return verified;
 	}		
 }

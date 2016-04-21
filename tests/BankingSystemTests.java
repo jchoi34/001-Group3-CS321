@@ -8,6 +8,10 @@ public class BankingSystemTests {
 	    fail(String.format(fmt,args));
 	  }
 	
+	public static void main(String[] args){
+		org.junit.runner.JUnitCore.main("BankingSystemTests");
+	}
+
 	  @SuppressWarnings("unchecked")
 	  @org.junit.Test(timeout=1000) public void BankingSystemTest1(){
 	  // Check LinkedArrayNode.remove(x) where x is null throws exception
